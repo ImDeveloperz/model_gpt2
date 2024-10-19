@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    build: ./web
+    ports:
+      - "8000:8000"
+    depends_on:
+      - inference_service
+  inference_service:
+    build: ./inference
+    ports:
+      - "5000:5000"

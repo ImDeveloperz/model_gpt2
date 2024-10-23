@@ -17,6 +17,7 @@ Commencez par cloner ce dépôt sur votre machine locale :
 git clone https://github.com/ImDeveloperz/model_gpt2.git
 cd model_gpt2
 ```
+  
 ### 2. Construire et démarrer les conteneurs Docker
    
 ```bash
@@ -29,6 +30,6 @@ Après avoir démarré les conteneurs, vous pouvez accéder à l'interface graph
 Exemple de requête d'inférence
 
 ```bash
-curl -X POST "http://localhost:5000/generate" -H "Content-Type: application/json" -d '{"text": "Voici un exemple de texte à compléter par GPT-2."}'
+curl -X POST "http://localhost:5000/generate-text" -H "Content-Type: application/json" -d '{"input_text": "Voici un exemple de texte à compléter par GPT-2.","max_length" : 100}'
 ```
 

@@ -7,8 +7,8 @@ INFERENCE_URL = "http://inference_service:5000/generate-text"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    prompt = "hh"
-    prediction = "No"
+    prompt = ""
+    prediction = ""
     if request.method == 'POST':
         prompt = request.form.get('prompt')
         if prompt:
@@ -16,7 +16,7 @@ def index():
                 # Create the JSON payload
                 payload = {
                     "input_text": prompt,
-                    "max_length": 50,
+                    "max_length": 100,
                 }
                 # Send the POST request with JSON data
                 response = requests.post(INFERENCE_URL, json=payload)

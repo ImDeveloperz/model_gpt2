@@ -1,19 +1,17 @@
 # Use an official Python runtime as a parent image
-FROM python:3.12.3
+FROM python:3.12.3 
 # Set the working directory in the container
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app
 COPY . /app
-COPY ./venv/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 # Install any needed packages specified in requirements.txt
-RUN pip --default-timeout=1000 install --no-cache-dir -r requirement.txt --no-deps
-
+RUN pip install --no-cache-dir -r requirement.txt --timeout=600
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 
 # Define environment variable
-ENV NAME InferenceService
+ENV NAME=InferenceService
 
 # Run inference.py when the container launches
 CMD ["uvicorn", "inference:app", "--host", "0.0.0.0", "--port", "5000", "--reload"]

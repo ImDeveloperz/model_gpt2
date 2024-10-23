@@ -1,4 +1,9 @@
 version: '3'
+
+networks:
+  app-network:  # Define a custom network
+    driver: bridge  # Use the default bridge driver
+
 services:
   web:
     build: ./web
@@ -6,7 +11,12 @@ services:
       - "8000:8000"
     depends_on:
       - inference_service
+    networks:
+      - app-network  # Connect to the custom network
+
   inference_service:
     build: ./inference
     ports:
       - "5000:5000"
+    networks:
+      - app-network  # Connect to the custom network

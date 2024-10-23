@@ -3,4 +3,3 @@ pydantic
 transformers
 uvicorn
 torch
-h11
